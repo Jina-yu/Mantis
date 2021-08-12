@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+
+<article class="post featured">
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+								        <p style="font-size: 60px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">인증 대기 중입니다!</p>
+                                            <br>
+                                        <a href=""{% url 'index' %}"><img src="{% static 'images/강의실가로.jpg' %}" alt="" width="100%"></a>
+								</article>
+							</section>
+
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+
+								</div>
+							</footer>
+
+					</div>
+
+{% endblock %}

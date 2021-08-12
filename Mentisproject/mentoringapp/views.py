@@ -25,3 +25,6 @@ def class1(request):
 
 def class1_play(request):
     return render(request, "class1_play.html")
+
+def mentor(request):
+    return render(request, "mentor.html")
