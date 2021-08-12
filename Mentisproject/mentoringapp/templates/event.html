@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
+
+{% load static %}
+
 <style>
 
     .clearfix:before, .clearfix:after {
@@ -8,142 +10,142 @@
         display: block;
         clear: both;
     }
-    .mantis > p {
-        text-align: center;
-        line-height: 30px;
-        font-family: sans-serif;
-        font-weight: bold;
-    }
+    .content {font-family: 'Noto Sans KR', sans-serif; letter-spacing: -0.8px;}
 
-    .mantis > hr {
-        padding-top: 100px;
-    }
-    
-    .eventUp-button {text-align: right; margin-bottom: 10rem;}
+    .content h1 {font-family: 'Noto Sans KR', sans-serif; font-size: 3rem;}
 
-    .eventList {
-        width: 100%;
-		border: 5px solid #b4d86786;
-		border-radius: 0;
-		cursor: pointer;
-        font-family: 'Noto Sans KR', sans-serif;
-		padding: 1rem;
-        transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
-        margin-top: 5rem;
-    }
-    .eventList:hover {
-    box-shadow: inset 0 0 0 2px #b5d867;
-    border-color: #b5d867;
-    }
+    section h3,h2,h1,h4 {font-size: 1.5rem; letter-spacing: -0.5px; font-family: 'Noto Sans KR', sans-serif;}
+    section div button {float: right;}
 
-    .eventList .title {
-        height: 100%;
-        width: 80%;
-        padding: 5px;
-        float: left;
-    }
-
-    .eventList .title h1 {
-        font-family: 'Noto Sans KR', sans-serif;
-        text-align: left;
-        font-size: 2rem;
-        font-weight: 800;
-        white-space: inherit;
-        word-break: keep-all;
-        line-height: 3.5rem;
-        letter-spacing: -1px;
-    }
-
-    .eventList .mentoInfo{
+    .content .info h3 {font-size: 1rem;}
+    .content .info h3 span {font-size: 2rem;}
+    .content .info {
+        width: 30%;
+        height: 600px;
         float: right;
-        text-align: right;
+        border-left: 1px solid #333;
+        padding: 3rem;
+        word-break: keep-all;
     }
-
-    .eventList .mentoInfo .info {
-        text-align: right;
-        padding-top: 1rem;
-        line-height: 25px;
-        margin: 0;
-        color: #5C5980;
-    }
-    .eventList .mentoInfo .mento .name { font-size: 20px; color: black;}
-    .eventList .mentoInfo .mento {text-align: right; color: rgba(0, 0, 0, 0.452);}
+    .content .info p {text-align: left;}
+    .content .info-right {margin: 3rem 0; font-size: 0.8rem; text-align: right; line-height: 25px; color: #3C3FB2}
     
+    .content .intro {
+        margin-top: 3rem;
+        width: 70%;
+        float: left;
+        padding: 2rem;
+        padding-right: 3rem;
+        word-break: keep-all;
+        margin-bottom: 3rem;
+    }
 
+    .content .classList {
+        width: 70%;
+        float: left;
+        padding: 2rem;
+        padding-right: 3rem;
+        margin-bottom: 3rem;
+
+    }
+
+    .content .review {
+        width: 70%;
+        float: left;
+        padding: 2rem;
+        padding-right: 3rem;
+    }
+    .classList table {text-align: center;}
+    .classList table th {text-align: center;}
+
+    .userRiview {margin-bottom: 3rem;}
+    .userRiview hr {margin: 1rem 0;}
+    .userRiview p {margin: 0 1rem;}
+    .userRiview p.name {color: #777;}
+    .userRiview p.reviewtext {font-size: 1.1rem; margin: 1rem;}
+    
 </style>
 
-<div id="main">
-    <!-- Featured Post -->
-        <article class="post featured">
-            <div class="mantis">
-                <h1><a>멘토의 이벤트</a></h1>
-                <p>멘토들이 진행하는 다양한 이벤트에 참여해보세요!
-                    <br>자신이 원하는 이벤트에 참여하고 다양한 혜택을 누리세요!</p>
-                <hr>
-            </div>
-
-            <div class="eventUp-button"><a href="{% url 'event_up' %}" class="button primary">이벤트 작성하기</a></div>
-            <!-- 멘토로 로그인됐을때만 보이게 -->
-            
-            <div class="eventList clearfix">
-                <div class="title">
-                    <h1>여름방학 특별 면담 이벤트!</h1>
-                </div>
-                <div class="mentoInfo clearfix">
-                    <p class="mento">멘토&nbsp;<span class="name">이시윤</span></p>                                        
-                    <P class="info">경기대학교<br>네이버 웹디자이너</P>
-                </div>
-            </div>
-            <div class="eventList clearfix">
-                <div class="title">
-                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
-                </div>
-                <div class="mentoInfo clearfix">
-                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
-                    <P class="info">00대학교<br>대기업사원</P>
-                </div>
-            </div>
-            <div class="eventList clearfix">
-                <div class="title">
-                    <h1>만약에 내가 첫 월급을 받는다면?! 하고 싶었던걸 적어보세요!</h1>
-                </div>
-                <div class="mentoInfo clearfix">
-                    <p class="mento">멘토&nbsp;<span class="name">강동원</span></p>                                        
-                    <P class="info">00대학교<br>짱좋은대기업</P>
-                </div>
-            </div>
-            <div class="eventList clearfix">
-                <div class="title">
-                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
-                </div>
-                <div class="mentoInfo clearfix">
-                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
-                    <P class="info">00대학교<br>대기업사원</P>
-                </div>
-            </div>
-            <div class="eventList clearfix">
-                <div class="title">
-                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
-                </div>
-                <div class="mentoInfo clearfix">
-                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
-                    <P class="info">00대학교<br>대기업사원</P>
-                </div>
-            </div>
-            <br><br><br><br>
-            <footer>
-                <div class="pagination">
-                    <a href="#" class="page active">1</a>
-                    <a href="#" class="page">2</a>
-                    <a href="#" class="page">3</a>
-                    <span class="extra">&hellip;</span>
-                    <a href="#" class="page">8</a>
-                    <a href="#" class="page">9</a>
-                    <a href="#" class="page">10</a>
-                    <a href="#" class="next">Next</a>
-                </div>
-            </footer>
+<div class="content">
+    <header><h1>class이름</h1></header>
+    <section class="info">
+        <div><h3>멘토 <span>김00</span></h3></div>
+        <div class="info-right">
+            홍익대학교<br>프리랜서 그래픽디자이너
         </div>
-        </article>
-
+        <div>
+            <p>안녕하세요, 프리랜서 그래픽디자이너 김00입니다.
+                <br>멘티스에서 멘토로 활동하고 있으며, 디자이너를 꿈꾸는 학생들에게 도움을 주고싶습니다.
+            </p>
+        </div>
+    </section>
+    <section class="intro">
+        <h3>강의 소개</h3>
+        <div><p>(클래스 소개작성)            
+                <br>ex)포토샵 완전정복!
+                <br>단기간 포토샵 집중공략 & 포트폴리오 하나 만들자!
+                <br>디자인을 배우고싶은데 학원비는 비싸고, 독학은 엄두가 안나는 분들을 위해 준비한 커리큘럼입니다.
+                <br>홍익대학교 디자인과를 나와 현재 그래픽아트 포스터를 제작하고있는 현직 프리랜서 디자이너가 직접 가르쳐 드립니다!
+            </p>
+        </div>
+        <div></div>
+    </section>
+    <section class="classList">
+        <h3>커리큘럼</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.1</th>
+                    <th>강좌명</th>
+                    <th>play</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>(영상강의 제목)</td>
+                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=1200, height=600');">▶</a></td>
+                    <!-- 수강을안하면 못클릭하게 -->
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>(영상강의 제목)</td>
+                    <td><a>▶</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>(영상강의 제목)</td>
+                    <td><a>▶</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="review">
+        <h3>후기</h3>
+        <div class="userRiview">
+            <p class="name">이름</p>
+            <p class="reviewtext">
+                좋아요! 얻어가는게 많았습니다.
+            </p>
+            <hr>
+            <p class="name">이름</p>
+            <p class="reviewtext">
+                좋아요! 얻어가는게 많았습니다.
+            </p>
+            <hr>
+            <p class="name">이름</p>
+            <p class="reviewtext">
+                좋아요! 얻어가는게 많았습니다.
+            </p>
+            <hr>
+        </div>
+        <div>
+            <span>리뷰작성하기</span>
+            <textarea></textarea>
+            <br>
+            <button type="submit">제출하기</button>
+        </div>
+    </section>
+</div>
+    
 {% endblock %}

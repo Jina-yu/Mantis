@@ -17,6 +17,9 @@ def event_up(request):
 def event_re(request):
     return render(request, "event_re.html")
 
+def lecture(request):
+    return render(request, "lecture.html")    
+
 def class1(request):
     return render(request, "class1.html")
 
