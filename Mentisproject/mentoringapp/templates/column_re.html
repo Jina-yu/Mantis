@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<h1 class="text-center"> MENTOR COLUMN </h1>
+
+<br />
+
+<h5>COLUMN TITLE</h5>
+<div class="field">
+	<textarea name="message" id="message" rows="1" placeholder="칼럼 제목을 입력해주세요! "></textarea>
+</div>
+
+<br />
+<br />
+
+<h5>COLUMN URL</h5>
+<div class="field">
+	<textarea name="message" id="message" rows="1" placeholder="칼럼 URL이 있다면 입력해주세요! "></textarea>
+</div>
+
+<br />
+<br />
+
+<h5>DATE</h5>
+<div class="field">
+	<textarea name="message" id="message" rows="1" placeholder="수정 날자를 입력해주세요!  ex:2009-08-28"></textarea>
+</div>
+
+<br />
+<br />
+	
+<h5>COLUMN CONTENT</h5>
+<div class="field">
+	<textarea name="message" id="message" rows="22" placeholder="칼럼의 상세내용을 입력해주세요!"></textarea>
+</div>
+
+<br />
+<br />
+<br />
+
+<ul class="actions special">
+	<li><a href="#" class="button large">수정하기</a></li>
+</ul>
+
+<br />
+<br />
+
+{% endblock %}
