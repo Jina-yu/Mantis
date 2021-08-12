@@ -28,3 +28,6 @@ def class1_play(request):
 
 def mentor(request):
     return render(request, "mentor.html")
+
+def apply_check(request):
+    return render(request, "apply_check.html")
