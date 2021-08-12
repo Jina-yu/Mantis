@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faster+One&family=Lobster&family=Open+Sans&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  html,body{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    background-image: url('../../images/인증대기.jpg');
+    background-repeat : no-repeat;
+    background-size : cover;
+  }
+
+  .box {
+      background-color: antiquewhite;
+      border: 1px solid antiquewhite;     
+      width: 350px;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      padding: 5px;
+      border-radius: 10px;
+  }
+
+  .mantis {
+    font-weight: 200; font-size: 40px; text-align: center;
+  }

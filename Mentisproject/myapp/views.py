@@ -13,3 +13,21 @@ def login(request):
 
 def mypage(request):
     return render(request, "mypage.html")
+
+def myinfo_re(request):
+    return render(request, "myinfo_re.html")
+
+def myinfo_up(request):
+    return render(request, "myinfo_up.html")
+
+def myclass(request):
+    return render(request, "myclass.html")
+
+def cash(request):
+    return render(request, "cash.html")
+
+def certification(reqeust):
+    return render(reqeust, "certification.html")
+
+def certification_check(request):
+    return render(request,"certification_check.html")

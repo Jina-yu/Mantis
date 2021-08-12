@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'assets/css/certification_check.css' %}">
+    
+  </head>
+
+  <body>
+    <div class="box">
+        <br>
+        <div class="mantis">
+            <header><p><b>Mantis</b></p></header>
+        </div>
+        <br>
+        <p style="font-size: 25px; text-align: center;">인증 대기 중입니다!</p>
+        <br>
+        <div style="text-align: center;">
+            <a href="{% url 'index' %}"><input type="button" value="확인" style="width: 50px; height: 30px;"></a>
+        </div>
+        <br>  
+    </div>    
+  </body>
+
+</html>
