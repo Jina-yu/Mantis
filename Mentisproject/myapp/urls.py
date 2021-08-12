@@ -9,6 +9,8 @@ urlpatterns = [
     path('myinfo_up', views.myinfo_up, name='myinfo_up'),
     path('myclass', views.myclass, name='myclass'),
     path('cash',views.cash, name='cash'),
+    path('cash_check', views.cash_check, name='cash_check'),
     path('certification', views.certification, name='certification'),
     path('certification_check', views.certification_check, name='certification_check'),
+    path('class_upload', views.class_upload, name='class_upload'),
 ]

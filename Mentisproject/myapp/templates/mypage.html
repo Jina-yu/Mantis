@@ -4,26 +4,49 @@
 {% load static %}
 <style>
     
+    *{
+        padding: 0;
+        margin: 0;
+    }
+
     .main {
         font-family: 'Nono Sans KR', sans-serif;
     }
 
-    .userimage {
-        width: 200px; 
-        height: 150px; 
-        padding:0; 
-        float: left; 
-        margin-right: 10px;
-    }
-     
-    .usercontent {
-        width: 200px; 
-        padding:0; 
-        height: 150px; 
+    .user1 {
         float: left;
+        width: 20%;
+        height: 200px;
+        margin-right: 5%;
     }
 
-    .clearfix::after {
+    .user2 {
+        float: left;
+        width: 30%;
+        height: 200px;
+        margin-right: 5%;
+    }
+
+    .user3 {
+        border: 1px solid lightgray;
+        float: left;
+        width: 15%;
+        height: auto;
+        margin-right: 5%;
+    }
+
+    .user4 {
+        border: 1px solid lightgray;
+        float: left;
+        width: 15%;
+        height: auto;
+    }
+
+    .userimage {
+        display:block; margin-left: auto; margin-right: auto;
+    }
+
+    .clearfix::before .clearfix::after {
         clear: both;
         content: '';
         display: block;
@@ -36,6 +59,7 @@
         min-height: 100px; 
         overflow: auto;
     }
+    
 </style>
 
 
@@ -49,48 +73,44 @@
 
     <hr/>
 
-    <div class="userimage">
-        <img src="{% static 'images/user.png' %}" width="150px" alt="">
-        <h2 style="position: relative; left: 30px;">이름</h2> <br>
-    </div>
+    <div class="user">
+        <div class="user1">
+            <img src="{% static 'images/user.png' %}" width="200px" alt="" class="userimage">
+            <br>
+            <h2 style="text-align: center;">이름</h2>
+        </div>
 
-    <div class="usercontent"> 
-        <h3>CS ENGINEER</h3>  <!--'CS ENGINEER'라고 적힌 부분엔 USER의 희망 직종-->
-        <hr/>
-        <h6>대학교</h6>
-        <h6>학과</h6> 
-        <h6>학점</h6>
-        <h6>TOEIC</h6> 
-        <h6>보유 POINT</h6> 
-    </div>
+        <div class="user2">
+            <h3>미래의 CS ENGINEER님</h3>
+            <hr/>
+            <h6>대학교 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 경기대학교(수원)</h6>
+            <h6>학과 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00학과</h6> 
+            <h6>학점 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0/4.5</h6>
+            <h6>TOEIC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 900/990</h6> 
+            <h6>보유 POINT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3900P</h6>
+        </div>
 
-    <div class="usercontent" style="margin-right: 50px;"> 
-        <h3> &nbsp; </h3>
-        <hr/>
-        <h6>경기대학교</h6>  <!-- 각 유저의 대학교 -->
-        <h6>멋사학과</h6>   <!--  각 유저의 학과 -->
-        <h6>4.3/4.5</h6>    <!-- 각 유저의 학점 -->
-        <h6>900/990</h6>   <!-- 각 유저의 토익 점수 -->
-        <h6>3900P</h6>      <!-- 각 유저의 포인트 -->
-    </div>
-    
-    <div class="userside">
-        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; margin-right: 30px; text-align: center;">
-            <a href="{% url 'myclass' %}"><br>수강 중인 강의<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
-            1개 <!--유저가 선택한 강의 수만큼 숫자가 들어갈 수 있게-->
+        <div class="user3">
+            <a href="{% url 'myclass' %}">
+                <br>
+            <h4 style=" text-align: center;">수강중인 강의</h4>
+            <hr>
+            <h4 style="text-align: center;"> 1 개</h4> <br>
             </a>
-        </h4>
-    </div>
+        </div>
 
-    <div class="userside">
-        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; text-align: center;">
-            <a href="{% url 'certification' %}"><br>대학교 인증 여부<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
-            인증완료 <!-- 인증 여부에 따라 '인증 완료/ 인증 대기/ 인증 전'으로 구분 -->
-        </a>
-        </h4>
+        <div class="user4">
+            <a href="{% url 'certification' %}">
+                <br>
+            <h4 style=" text-align: center;">대학생 인증 여부</h4>
+            <hr>
+            <h4 style="text-align: center;">인증완료</h4> <br>
+            </a>
+        </div>
+
     </div>
     
-    <br><br><br><br><br><br><br><hr/>
+    <br><br><br><br><br><br><br><hr>
     
     <!--마이페이지 속 nav-->
     <div class="usernav">
