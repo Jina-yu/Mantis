@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<style>
+    *{
+        font-family: 'Nono Sans KR', sans-serif;
+    }
+
+    .table-wrapper table td { font-family: 'Nono Sans KR', sans-serif; }
+
+</style>
+
+<!-- Form -->
+<h2>강의 업로드</h2>
+<br>
+<hr style="margin: 0 0 1rem 0;">
+
+<form method="post" action="#">
+    <div class="row gtr-uniform">
+        <!-- class 이름 -->
+        <div class="col-6 col-12-xsmall">
+            <h3>CLASS 이름</h3>
+            <input type="text" name="demo-name" id="demo-name" value="" placeholder="CLASS 이름"/>
+        </div>
+
+        <!-- 강의 소개 -->
+        <div class="col-12">
+            <h3>강의 소개</h3>
+            <textarea name="demo-message" id="demo-message" placeholder="강의를 소개해주세요!" rows="6"></textarea>
+        </div>
+
+        <!-- 커리큘럼 -->
+        <h3>커리큘럼 &nbsp;
+            <span><input type="file" name="demo-image" id="demo-image" value=""/></span>
+        </h3>
+    
+        <div class="col-6 col-12-xsmall">
+            <span><input type="url" name="demo-name" id="demo-name" value="" placeholder="유튜브 링크 입력칸" /></span>
+        </div>
+    </div>
+    
+    <div class="col-6 col-12-xsmall">
+        <h5>강의명</h5>
+        <input type="text" name="demo-name" id="demo-name" value="" placeholder="강의명을 입력해주세요."/>
+    </div>
+
+    <br>
+
+    <div class="table-wrapper" style="text-align: center;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: center;">NO.1</th>
+                    <th style="text-align: center;">강의명</th>
+                    <th style="text-align: center;">PLAY</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>(영상강의 제목)</td>
+                    <td>▶</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>(영상강의 제목)</td>
+                    <td>▶</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>(영상강의 제목)</td>
+                    <td>▶</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</form>
+
+<ul class="actions fit">
+    <li><a href="#" class="button primary fit">등록하기</a></li>
+</ul>
+
+    
+{% endblock %}

@@ -27,10 +27,13 @@ def cash(request):
     return render(request, "cash.html")
 
 def cash_check(request):
-    return render(request,"cash_check.html")
+    return render(request, "cash_check.html")
 
 def certification(reqeust):
     return render(reqeust, "certification.html")
 
 def certification_check(request):
     return render(request,"certification_check.html")
+
+def class_upload(request):
+    return render(request, "class_upload.html")

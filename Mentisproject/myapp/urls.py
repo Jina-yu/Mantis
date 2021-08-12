@@ -12,4 +12,5 @@ urlpatterns = [
     path('cash_check', views.cash_check, name='cash_check'),
     path('certification', views.certification, name='certification'),
     path('certification_check', views.certification_check, name='certification_check'),
+    path('class_upload', views.class_upload, name='class_upload'),
 ]
