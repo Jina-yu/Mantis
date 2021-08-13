@@ -1,236 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
 {% load static %}
 
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Massively by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}"/>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Open+Sans&display=swap" rel="stylesheet"
-		<script src="https://kit.fontawesome.com/9640093bc0.js" crossorigin="anonymous"></script>
+<style>
+  hr {margin: 0;}
+  footer {text-align: center;}
+  .lecture {font-family: 'Noto Sans KR', sans-serif; letter-spacing: -0.8px;}
+
+  .lecture > h1 {font-family: 'Noto Sans KR', sans-serif; font-size: 3rem; margin: 1rem 3rem;}
+  .lecture > p {margin: 1rem 3rem 2rem 3rem;}
+
+  .clearfix:before, .clearfix:after {
+      content:'';
+      display: block;
+      clear: both;
+  }
+
+  .lectureWrap {
+      margin: 5rem 0;
+  }
+
+  /* 멘토리스트 */
+  .mantoList {
+      width: 23.3333%;
+      height: 300px;
+      float: left;
+      margin: 5%;
+      border: 3px solid transparent;
+      transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+      position: relative;
+  }
+  .mantoList::before {
+      position: absolute;
+      content: '';
+      left: 0px;
+      bottom: 0px;
+      width: 0%;
+      height: 3px;
+      background: #b5d867;
+      box-shadow: inset 0px 0px 0px 0px #b5d867;
+      display: block;
+      transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+  }
+  .mantoList:hover::before { width: 100%;}
+  .mantoList::after {
+      position: absolute;
+      content: '';
+      right: 0px;
+      top: 0px;
+      width: 0%;
+      height: 3px;
+      background: #b5d867;
+      box-shadow: inset 0px 0px 0px 0px #b5d867;
+      display: block;
+      transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+  }
+  .mantoList:hover::after { width: 100%;}
+  .mantoList:hover { 
+      border-left: 3px solid #b5d867;
+      border-right: 3px solid #b5d867;
+  }
+
+  /* 멘토리스트 텍스트 */
+  .mantoList .text {padding: 1rem;}
+  .mantoList .text .mantoName { display: block; line-height: normal; font-size: 0.8rem;} 
+  .mantoList .text .mantoName span {font-size: 1.2rem; line-height: normal}
+  .mantoList .text .mantoInfo {color: #3C3FB2; font-size: 0.8rem; line-height: normal; margin: 20px 0;}
+  .mantoList .text .lecturetitle {font-size: 1.8rem; font-weight: 900; line-height: normal; word-break: keep-all; margin: 20px 0;}
+  .mantoList .text .lectureIntro {font-size: 0.8rem; line-height: normal; word-break: keep-all; overflow: hidden; text-overflow: ellipsis;}
+</style>
 
 
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-
-
-
-	</head>
-	<body class="is-preload">
-
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
-
-				<!-- Intro -->
-					<div id="intro">
-						<div id="mantis"><h1>Mantis<br /></h1></div>
-						
-						<p>대학생을 위한 멘토 멘티 서비스<br>
-						그 선배의 취업 성공전략? 멘티스에서 배워봐!</p>
-
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
-
-				<!-- Header -->
-					<header id="header">
-						<a href="#" class="logo">Mantis</a>
-					</header>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="{% url 'index' %}">멘티스란?</a></li>
-							<li class="active"><a href="{% url 'mentoring' %}">멘토 찾기</a></li>
-							<li><a href="{% url 'mypage' %}">내 서랍</a></li>
-						</ul>
-
-									
-													
-						<ul class="icons">
-
-							<li><a href="{% url 'login' %}"><i class="fas fa-user-plus"></i></a></li>
-							<li><a href="{% url 'signup' %}"><i class="fas fa-sign-in-alt"></i></a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-                        <div class="container">
+<!--body-->
 <article class="post featured">
     <header class="major">
         <h2><a href="#move">검증된 실무 멘토가 진행하는<br/>
-         멘토링 수업에 참여하세요!&#128526;</a></h2>
+         멘토링 수업에 참여하세요!</a></h2>
         <p>
-            <h6>취업에 성공한 선배들을 통해 취업과 진로 고민을 해결하세요. <br>
+            취업에 성공한 선배들을 통해 취업과 진로 고민을 해결하세요. <br>
             나만의 포트폴리오 준비, 자소서 준비, 다양한 취업정보들 멘토링을 통해 배워보세요!<br>
             함께 취업을 만들어가 볼까요?
         </p>
     </header>
 </article>
-
-<hr />
 <br>
-
-
-<div>
-    <h5 class="text-center" > <a id="move">&#127793;나의 직무와 맞는 멘토 찾아보기&#127793;</a></h5>
+<br>
+<div class="lecture">
+  <hr>
+  <div>
+    <h5 class="text-center" > <a id="move">나의 직무와 맞는 멘토 찾아보기</a></h5>
     <br>		
-    	<ul class="actions small">
-            <li><a href="#move" class="button primary small">IT/SW</a></li>
-        	<li><a href="#" class="button small">PM</a></li>
-            <li><a href="#" class="button primary small">건설/기계/기술</a></li>
-        	<li><a href="#" class="button small">광고/홍보</a></li>
-            <li><a href="#" class="button primary small">금융/은행/보험</a></li>
-        	<li><a href="#" class="button small">디자인</a></li>
-            <li><a href="#" class="button primary small">미디어</a></li>
-        	<li><a href="#" class="button small">연구개발</a></li>
-            <li><a href="#" class="button primary small">유통/물류/무역</a></li>
+    	<ul class="actions small hobe" >
+            <form action="">
+                {% csrf_token %}
+
+            <button type="submit" name="temp" value="IT/SW" class="button small" formmethod="POST">IT/SW</button>
+            <button style="display: inline;" type="submit" name="temp" value="PM" class="button primary small" formmethod="POST">PM</button>
+            <button type="submit" name="temp" value="건설/기계/기술" class="button small" formmethod="POST">건설/기계/기술</button>
+            <button type="submit" name="temp" value="유통/물류/무역" class="button primary small" formmethod="POST">유통/물류/무역</button>
+
+            <button type="submit" name="temp" value="광고/홍보" class="button  small" formmethod="POST">광고/홍보</button>
+            <button type="submit" name="temp" value="금융/은행/보험" class="button primary small" formmethod="POST">금융/은행/보험</button>
+            <button type="submit" name="temp" value="디자인" class="button  small" formmethod="POST">디자인</button>
+            <button type="submit" name="temp" value="미디어" class="button primary small" formmethod="POST">미디어</button>
+            <button type="submit" name="temp" value="연구개발" class="button  small" formmethod="POST">연구개발</button>
+
+            <button type="submit" name="temp" value="인사총무" class="button  small" formmethod="POST">인사총무</button>
+            <button type="submit" name="temp" value="품질" class="button primary small" formmethod="POST">품질</button>
+            <button type="submit" name="temp" value="의료" class="button  small" formmethod="POST">의료</button></li>
+            <button type="submit" name="temp" value="영업/고객상담" class="button primary small" formmethod="POST">영업/고객상담</button>
+            <button type="submit" name="temp" value="생산제조" class="button  small" formmethod="POST">생산제조</button>
+            
+            <button type="submit" name="temp" value="마케팅/기획" class="button  small" formmethod="POST">마케팅/기획</button>
+            <button type="submit" name="temp" value="경영/사무/행정" class="button primary small" formmethod="POST">경영/사무/행정</button>
+            <button type="submit" name="temp" value="MD/상품기획" class="button  small" formmethod="POST">MD/상품기획</button>
+            <button type="submit" name="temp" value="SCM" class="button primary small" formmethod="POST">SCM</button>
+            <button type="submit" name="temp" value="기타" class="button  small" formmethod="POST">기타</button>    
         </ul>
-    
-        <ul class="actions small">
-        	<li><a href="#" class="button small">인사총무</a></li>
-            <li><a href="#" class="button primary small">품질</a></li>
-        	<li><a href="#" class="button small">의료</a></li>
-            <li><a href="#" class="button primary small">영업/고객상담</a></li>
-        	<li><a href="#" class="button small">생산제조</a></li>
-            <li><a href="#" class="button primary small">마케팅/기획</a></li>
-        	<li><a href="#" class="button small">경영/사무/행정</a></li>
-            <li><a href="#" class="button primary small">MD/상품기획</a></li>
-        	<li><a href="#" class="button small">SCM</a></li>
-        </ul>
+  </div>
+  <div class="clearfix lectureWrap">
+      {% for obj in objects %}  
+             <div class="mantoList">
+              <a href="{% url 'mento_detail' obj.id %}">
+              <div class="text">
+                  <div class="mantoName">멘토 <span>{{obj.name}}</span></div>
+                  <div class="mantoInfo">
+                      {% for content in obj.contents %}
+                      {{content}}<br>
+                      {% endfor %}
+                  </div>
+                  <hr>
+                      <hr>
+                  <div class="lectureIntro">{{obj.field}}<br></div>
+              </div>
+              </a>
+            </div>
+      {% endfor %}
 </div>
-
-
-<br>
-<hr/>
-<br>
-<br>
-
-
-<h5 class="text-center">&#128161;이달의 인기 멘토 강좌&#128161;</h5>
-<br>
-<div class="card-group" class="text-center">
-  <div class="card">
-    <a href="#">
-      <img src="{% static 'images/반도체.png' %}" class="card-img-top" alt="..." width="300px" height="250px" >
-    </a>
-    <div class="card-body">
-      <h5 class="card-title">연구개발</h5>
-      <h6>ooo멘토님</h6>
-      <p class="card-text">반도체 회로설계 과정을 이해하고 포트폴리오 준비하기! </p>
-    </div>
+<footer>
+  <div class="pagination">
+      <a href="#" class="page active">1</a>
+      <a href="#" class="page">2</a>
+      <a href="#" class="page">3</a>
+      <span class="extra">&hellip;</span>
+      <a href="#" class="page">8</a>
+      <a href="#" class="page">9</a>
+      <a href="#" class="page">10</a>
+      <a href="#" class="next">Next</a>
   </div>
-  <div class="card">
-    <a href="#">
-      <img src="{% static 'images/마케팅.png' %}" class="card-img-top" alt="..." width="300px" height="250px">
-    </a>
-    <div class="card-body">
-      <h5 class="card-title">마케팅</h5>
-      <h6>ooo멘토님</h6>
-      <p class="card-text">콘테츠 마케팅의 기초와 핵심살펴보고 자소서 첨삭하기!</p>
-    </div>
-  </div>
-  <div class="card">
-    <a href="#">
-      <img src="{% static 'images/생산제조.png' %}" class="card-img-top" alt="..." width="300px" height="250px">
-     </a> 
-    <div class="card-body">
-      <h5 class="card-title">생산/제조</h5>
-      <h6>ooo멘토님</h6>
-      <p class="card-text">대기업 반도체 공정기술 살펴보고, 취업에 도움되는 실무강의 수강하기! </p>
-    </div>
-  </div>
-</div>		
+</footer>
 
-<br>
-<br>
-<hr/>
-<br>
-<br>
-
-<h5 class="text-center">&#128106;우리학교 선배 강좌&#128106;</h5>
-<br>
-<div class="card-group" class="text-center">
-  <div class="card">
-    <a href="#">
-      <img src="{% static 'images/디자인.png' %}" class="card-img-top" alt="..." width="300px" height="250px">
-     </a> 
-    <div class="card-body">
-      <h5 class="card-title">디자인</h5>
-      <h6>ooo멘토님</h6>
-      <p class="card-text">경기대 시각디자인 09학번 선배가 진행하는 디자인 멘토링 참여하기!</p>
-    </div>
-  </div>
-  <div class="card">
-    <a href="#">
-      <img src="{% static 'images/연구개발.png' %}" class="card-img-top" alt="..." width="300px" height="250px">
-    </a>
-    <div class="card-body">
-      <h5 class="card-title">연구 개발</h5>
-      <h6>ooo멘토님</h6>
-      <p class="card-text">경기대 화학공학과 12학번 선배가 진행하는 화장품 연구 멘토링 참여하기 </p>
-    </div>
-  </div>
-  <div class="card">
-    <a href="#">
-      <img src="{% static 'images/건축.png' %}" class="card-img-top" alt="..." width="300px" height="250px">
-     </a> 
-    <div class="card-body">
-      <h5 class="card-title">건설/ 기계/ 기술</h5>
-      <h6>ooo멘토님</h6>
-      <p class="card-text">경기대 건축학과 05학번 선배가 진행하는 플랜트 사업실무 멘토링 참여하기! </p>
-    </div>
-  </div>
-</div>
-				
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-
-
-					</footer>
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>멋쟁이사자처럼 2021년 해커톤</li></ul>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
-			<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
-			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
-			<script src="{% static 'assets/js/browser.min.js' %}"></script>
-			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
-			<script src="{% static 'assets/js/util.js' %}"></script>
-			<script src="{% static 'assets/js/main.js' %}"></script>
-
-
-
-	</body>
-</html>
-
-
-
-
-
-
-
-
-
+{% endblock %}

@@ -1,52 +1,30 @@
-{% extends 'mybase.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+
 {% load static %}
+{% block content %}
 <style>
     
-    *{
-        padding: 0;
-        margin: 0;
-    }
-
     .main {
         font-family: 'Nono Sans KR', sans-serif;
     }
 
-    .user1 {
-        float: left;
-        width: 20%;
-        height: 200px;
-        margin-right: 5%;
-    }
-
-    .user2 {
-        float: left;
-        width: 30%;
-        height: 200px;
-        margin-right: 5%;
-    }
-
-    .user3 {
-        border: 1px solid lightgray;
-        float: left;
-        width: 15%;
-        height: auto;
-        margin-right: 5%;
-    }
-
-    .user4 {
-        border: 1px solid lightgray;
-        float: left;
-        width: 15%;
-        height: auto;
-    }
-
     .userimage {
-        display:block; margin-left: auto; margin-right: auto;
+        width: 200px; 
+        height: 150px; 
+        padding:0; 
+        float: left; 
+        margin-right: 10px;
+    }
+     
+    .usercontent {
+        width: 200px; 
+        padding:0; 
+        height: 150px; 
+        float: left;
     }
 
-    .clearfix::before .clearfix::after {
+    .clearfix::after {
         clear: both;
         content: '';
         display: block;
@@ -59,65 +37,112 @@
         min-height: 100px; 
         overflow: auto;
     }
-    
 </style>
 
-<section class="posts">
+
 <div class="main">
 
     <header>
         <h2 style="float: left;">MY PAGE <span>&nbsp;&nbsp;</span></h2>
         <a href="{% url 'myinfo_up' %}" style="font-size: 20px;">정보 등록</a> <span>&nbsp;&nbsp;</span> 
-        <a href="{% url 'myinfo_re' %}" style="font-size: 20px;">수정하기</a>
+        <a href="{% url 'myinfo_re' %}" style="font-size: 20px;">수정하기</a> <span>&nbsp;&nbsp;</span>
     </header>
 
     <hr/>
 
-    <div class="user">
-        <div class="user1">
-            <img src="{% static 'images/user.png' %}" width="200px" alt="" class="userimage">
-            <br>
-            <h2 style="text-align: center;">이름</h2>
-        </div>
+    <div class="userimage">
+        <img src="{% static 'images/user.png' %}" width="150px" alt="">
+        <h2 style="position: relative; left: 30px;">{{user.user_name}}</h2> <br>
+    </div>
 
-        <div class="user2">
-            <h3>미래의 CS ENGINEER님</h3>
-            <hr/>
-            <h6>대학교 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 경기대학교(수원)</h6>
-            <h6>학과 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00학과</h6> 
-            <h6>학점 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0/4.5</h6>
-            <h6>TOEIC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 900/990</h6> 
-            <h6>보유 POINT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3900P</h6>
-        </div>
+    {% if user.user_role == "멘티" %}
+    <div class="usercontent"> 
+        <h3>CS ENGINEER</h3>  <!--'CS ENGINEER'라고 적힌 부분엔 USER의 희망 직종-->
+        <hr/>
+        <h6>대학교</h6>
+        <h6>학과</h6> 
+        <h6>학점</h6>
+        <h6>TOEIC</h6> 
+        <h6>보유 POINT</h6> 
+    </div>
+    <div class="usercontent" style="margin-right: 50px;"> 
+        <h3> &nbsp; </h3>
+        <hr/>
+        <h6>경기대학교</h6>  <!-- 각 유저의 대학교 -->
+        <h6>멋사학과</h6>   <!--  각 유저의 학과 -->
+        <h6>4.3/4.5</h6>    <!-- 각 유저의 학점 -->
+        <h6>900/990</h6>   <!-- 각 유저의 토익 점수 -->
+        <h6>{{user.user_cash}} P</h6>      <!-- 각 유저의 포인트 -->
+    </div>
 
-        <div class="user3">
-            <a href="{% url 'myclass' %}">
-                <br>
-            <h4 style=" text-align: center;">수강중인 강의</h4>
-            <hr>
-            <h4 style="text-align: center;"> 1 개</h4> <br>
+    <div class="userside">
+        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; margin-right: 30px; text-align: center;">
+            <a href="{% url 'myclass' %}"><br>수강 중인 강의<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
+            {{menti_count}} <!--유저가 선택한 강의 수만큼 숫자가 들어갈 수 있게-->
             </a>
-        </div>
+        </h4>
+    </div>
 
-        <div class="user4">
-            <a href="{% url 'certification' %}">
-                <br>
-            <h4 style=" text-align: center;">대학생 인증 여부</h4>
-            <hr>
-            <h4 style="text-align: center;">인증완료</h4> <br>
+    <div class="userside">
+        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; text-align: center;">
+            <a href="{% url 'certification' %}"><br>대학교 인증 여부<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
+            {{check}} <!-- 인증 여부에 따라 '인증 완료/ 인증 대기/ 인증 전'으로 구분 -->
+        </a>
+        </h4>
+    </div>
+    {% else %}
+    <div class="usercontent"> 
+        <h3>CS ENGINEER</h3>  <!--'CS ENGINEER'라고 적힌 부분엔 USER의 희망 직종-->
+        <hr/>
+        <h6>회사</h6>
+        <h6>업무직종</h6> 
+        <h6>자격증</h6>
+        <h6>TOEIC</h6> 
+        <h6>보유 POINT</h6> 
+    </div>
+    <div class="usercontent" style="margin-right: 50px;"> 
+        <h3> &nbsp; </h3>
+        <hr/>
+        <h6>삼성전자</h6>  <!-- 각 유저의 대학교 -->
+        <h6>마케팅</h6>   <!--  각 유저의 학과 -->
+        <h6>컴활 1급,,,</h6>    <!-- 각 유저의 학점 -->
+        <h6>900/990</h6>   <!-- 각 유저의 토익 점수 -->
+        <h6>{{user.user_cash}} P</h6>      <!-- 각 유저의 포인트 -->
+    </div>
+    <div class="userside">
+        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; margin-right: 30px; text-align: center;">
+            <a href="{% url 'myclass' %}"><br>진행 중인 강의<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
+            {{mentor_count}} <!--유저가 선택한 강의 수만큼 숫자가 들어갈 수 있게-->
             </a>
-        </div>
-
+        </h4>
+    </div>
+    <div class="userside">
+        <h4 style="width: 300px; height: 300px; border: 1px solid lightgrey; float: left; text-align: center;">
+            <a href="{% url 'certification' %}"><br>대학교 인증 여부<hr style="height: 0px; width: 100%; border-bottom: 0px dotted gray; border-top: 1px dotted gray;"/>
+            {{check}} <!-- 인증 여부에 따라 '인증 완료/ 인증 대기/ 인증 전'으로 구분 -->
+        </a>
+        </h4>
     </div>
     
-    <br><br><br><br><br><br><br><hr>
+    {% endif %}
+
+    
+    
+    <br><br><br><br><br><br><br><hr/>
     
     <!--마이페이지 속 nav-->
     <div class="usernav">
         <ul class="actions" style="margin: 1rem 0 1rem 0;">
-            <li><a href="{% url 'mypage' %}"class="button primary">스펙</a></li>
+            <li><a href="{% url 'mypage' %}"class="button">스펙</a></li>
             <li><a href="{% url 'myclass' %}" class="button">강의</a></li>
-            <li><a href="{% url 'cash' %}" class="button">포인트 & 결제</a></li>
+            {% if user.user_role == "멘티" %}
+            <li><a href="{% url 'cash' %}" class="button primary">포인트 & 결제</a></li>
+            {% else %}
+            <li></li><a href="{% url 'class_upload' %}" class="button primary">수강업로드</a></li>
+            <li><a href="{% url 'column_write' %}" class="button primary">칼럼 작성하기</a></li>
+            <li><a href="{% url 'event_up' %}" class="button primary">이벤트 작성하기</a></li>
+            <li></li>
+            {% endif %}
         </ul>
     </div>
     
@@ -202,7 +227,7 @@
             </tbody>          
         </table>
     </div>
-
+    {% if user.user_role == "멘티" %}
     <h3>자기소개서</h3>
     <div class="abox">
         <div><h4 style="padding: 1rem 0 0 1rem;">지원동기</h4></div>
@@ -211,16 +236,7 @@
                 그렇게 학문을 공부하던 중 반도체 분야에 관심이 생겼고 00 회사에 지원하게 되었습니다.</p>
         </div>
     </div>
-</section>
-
-
+    {% endif %}
 </div> 
-    <!-- Footer -->
-        <footer>
-            <div class="pagination">
-                <!--<a href="#" class="previous">Prev</a>-->
-
-            </div>
-        </footer>
 
 {% endblock %}

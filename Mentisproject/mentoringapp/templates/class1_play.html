@@ -25,9 +25,9 @@
 
 </style>
 
-<header><div class="mantis"><span style="color:white;"><h1>Mantis</h1></style></div></header>
+<header><div class="mantis"><h1>Mantis</h1></div></header>
 <div class="video-wrap">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/LlcaD2myXt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src={{lec_url}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <section class="classList">
         <table>
             <thead>
@@ -38,47 +38,13 @@
                 </tr>
             </thead>
             <tbody>
+                {% for lec in detail_lec %}
                 <tr>
                     <td></td>
-                    <td>(영상강의 제목)</td>
-                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
+                    <td>{{lec.video_title}}</td>
+                    <td><a href="{% url 'class1_play' lec.id %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>(영상강의 제목)</td>
-                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>(영상강의 제목)</td>
-                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>(영상강의 제목)</td>
-                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>(영상강의 제목)</td>
-                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>(영상강의 제목)</td>
-                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>(영상강의 제목)</td>
-                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>(영상강의 제목)</td>
-                    <td><a href="{% url 'class1_play' %}" target="'_blank" onClick="window.open(this.href, '', 'width=700, height=400');">▶</a></td>
-                </tr>
-
+                {% endfor %}
             </tbody>
         </table>
     </section>

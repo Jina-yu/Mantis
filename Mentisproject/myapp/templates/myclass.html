@@ -1,49 +1,26 @@
-{% extends 'mybase.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 {% load static %}
 <style>
     
-    *{
-        padding: 0;
-        margin: 0;
-    }
-
     .main {
         font-family: 'Nono Sans KR', sans-serif;
     }
 
-    .user1 {
-        float: left;
-        width: 20%;
-        height: 200px;
-        margin-right: 5%;
-    }
-
-    .user2 {
-        float: left;
-        width: 30%;
-        height: 200px;
-        margin-right: 5%;
-    }
-
-    .user3 {
-        border: 1px solid lightgray;
-        float: left;
-        width: 15%;
-        height: auto;
-        margin-right: 5%;
-    }
-
-    .user4 {
-        border: 1px solid lightgray;
-        float: left;
-        width: 15%;
-        height: auto;
-    }
-
     .userimage {
-        display:block; margin-left: auto; margin-right: auto;
+        width: 200px; 
+        height: 150px; 
+        padding:0; 
+        float: left; 
+        margin-right: 10px;
+    }
+     
+    .usercontent {
+        width: 200px; 
+        padding:0; 
+        height: 150px; 
+        float: left;
     }
 
     .clearfix::before .clearfix::after {
@@ -70,90 +47,73 @@
     }
 </style>
 
+{% if user.user_role == "멘토" %}
+<div class="favorites">
+    
+    <a href="{% url 'class_view' mento.id %}"><h3>{{mento}} 님의 강의리스트로 가기 </h3></a>
 
-<div class="main">
+</div>
 
-    <header>
-        <h2 style="float: left;">MY PAGE <span>&nbsp;&nbsp;</span></h2>
-        <a href="{% url 'myinfo_up' %}" style="font-size: 20px;"></a> <span>&nbsp;&nbsp;</span> 
-        <a href="{% url 'myinfo_re' %}" style="font-size: 20px;"></a>
-    </header>
-
-    <hr/>
-
-    <div class="user">
-        <div class="user1">
-            <img src="{% static 'images/user.png' %}" width="200px" alt="" class="userimage">
+{% else %}
+<!-- 즐겨찾기 강의 -->
+<div class="favorites">
+    <h3>즐겨찾기</h3>
+    <div >
+        {% for i in FavorLec %}
             <br>
-            <h2 style="text-align: center;">이름</h2>
-        </div>
-
-        <div class="user2">
-            <h3>미래의 CS ENGINEER님</h3>
-            <hr/>
-            <h6>대학교 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 경기대학교(수원)</h6>
-            <h6>학과 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00학과</h6> 
-            <h6>학점 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.0/4.5</h6>
-            <h6>TOEIC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 900/990</h6> 
-            <h6>보유 POINT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3900P</h6>
-        </div>
-
-        <div class="user3">
-            <a href="{% url 'myclass' %}">
-                <br>
-            <h4 style=" text-align: center;">수강중인 강의</h4>
-            <hr>
-            <h4 style="text-align: center;"> 1 개</h4> <br>
-            </a>
-        </div>
-
-        <div class="user4">
-            <a href="{% url 'certification' %}">
-                <br>
-            <h4 style=" text-align: center;">대학생 인증 여부</h4>
-            <hr>
-            <h4 style="text-align: center;">인증완료</h4> <br>
-            </a>
-        </div>
-
+            <a href="{%url 'urlnameLectureDetail' i.id %}">{{i.lecture_title}}</a>
+        {% endfor %}
+        {% if 0 == fav_count %}
+        <p style="text-align: center;">아직 즐겨찾기 한 강의가 없습니다! <br>
+            <a href="{% url 'mentoring' %}">멘토링 페이지</a>에서 마음에 드는 강의를 둘러보세요!</p>
+        {% endif %}
     </div>
-    
-    <br><br><br><br><br><br><br><hr>
-    
-    <!--마이페이지 속 nav-->
-    <div class="usernav">
-        <ul class="actions" style="margin: 1rem 0 1rem 0;">
-            <li><a href="{% url 'mypage' %}"class="button">스펙</a></li>
-            <li><a href="{% url 'myclass' %}" class="button primary">강의</a></li>
-            <li><a href="{% url 'cash' %}" class="button">포인트 & 결제</a></li>
-        </ul>
-    </div>
-    
-    <hr>
-
-    <!-- 즐겨찾기 강의 -->
-    <div class="favorites">
-        <h3>즐겨찾기</h3>
-        <div >
-            <p style="text-align: center;">아직 즐겨찾기 한 강의가 없습니다! <br>
-                <a href="{% url 'mentoring' %}">멘토링 페이지</a>에서 마음에 드는 강의를 둘러보세요!</p>
-        </div>
-    </div>
+</div>
 
 
-    <!-- 수강 중인 강의 -->
-    <h3>수강 중인 강의</h3>
-    <div class="learning" style="float: left; width: 47%;">
-        <div class="learnlist">
-            <a href="#"><img src="{% static 'images/포토샵.jpeg' %}" class="learnimage" width="120px" alt="" ></a>
+<!-- 수강 중인 강의 -->
+<h3>수강 중인 강의</h3>
+<div class="learning" style="float: left; width: 47%;">
+    <div class="learnlist">
+        <!-- 이 부분이 저희 작성 부분 -->
+        {{user.user_name}}님이 듣고 계신 강의는 총 {{views_count}} 개 입니다.
+        {% for i in myLec %}
+            <a href="{%url 'urlnameLectureDetail' i.id %}"><img src="{% static 'images/포토샵.jpeg' %}" class="learnimage" width="120px" alt="" ></a>
             <br>
-            <h4 style="text-align: center;"> 포토샵 정복하기!</h4>
-            <h6 style="text-align: center;">000 멘토님</h6>
-        </div>
+            <h4 style="text-align: center;">{{myLec.lecture_title}}</h4>
+            <h6 style="text-align: center;">{{myLec.mentor_id}}</h6>
+        {% endfor %}
     </div>
+</div>
+{% endif %}
 
-    <br><br><br><br><br><br><br><br>
+
+<br><br><br><br><br><br><br><br>
 
 </div> 
 
 {% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    My 강의 페이지 입니다!!    
+    <p>이름 : {{user.user_name}}</p>
+    <p>아이디 : {{user.user_id}}</p>
+    <p>자신이 수강중인 강의 내역</p>
+    {{user.user_name}}님이 듣고 계신 강의는 총 {{views_count}} 개 입니다.
+    {% for i in myLec %}
+            <br>
+            <a href="{%url 'urlnameLectureDetail' i.id %}">{{i.lecture_title}}</a>
+    {% endfor %}
+
+</body>
+</html> -->
