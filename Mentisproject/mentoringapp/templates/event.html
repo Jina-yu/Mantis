@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'mentorbase.html' %}
 {% load static %}
 {% block content %}
 <style>
@@ -74,6 +74,7 @@
 
 <div id="main">
     <!-- Featured Post -->
+    
         <article class="post featured">
             <div class="mantis">
                 <h1><a>멘토의 이벤트</a></h1>
@@ -81,32 +82,56 @@
                     <br>자신이 원하는 이벤트에 참여하고 다양한 혜택을 누리세요!</p>
                 <hr>
             </div>
+
+            <div class="eventUp-button"><a href="{% url 'event_up' %}" class="button primary">이벤트 작성하기</a></div>
+            <!-- 멘토로 로그인됐을때만 보이게 -->
             
-            {% if eventLists %}
-            {% for event in eventLists %}
-            <a href="{% url 'event_detail' event.id %}">
             <div class="eventList clearfix">
-                    <div class="title">
-                        <h1>{{event.title}}</h1>
-                    </div>
-                    <div class="mentoInfo clearfix">
-                        <p class="mento">멘토&nbsp;<span class="name">{{event.name}}</span></p>                                        
-                        <P class="info">
-                            {% for content in event.contents %}
-                            {{content}}<br>
-                            {% endfor %}
-                        </P>
-                    </div>
+                <div class="title">
+                    <h1>여름방학 특별 면담 이벤트!</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">이시윤</span></p>                                        
+                    <P class="info">경기대학교<br>네이버 웹디자이너</P>
+                </div>
             </div>
-        </a> 
-            {% endfor %}
-            {%else%}
-            <p>현재 이벤트가 없습니다.</p>
-            {% endif %}
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
+                    <P class="info">00대학교<br>대기업사원</P>
+                </div>
+            </div>
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>만약에 내가 첫 월급을 받는다면?! 하고 싶었던걸 적어보세요!</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">강동원</span></p>                                        
+                    <P class="info">00대학교<br>짱좋은대기업</P>
+                </div>
+            </div>
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
+                    <P class="info">00대학교<br>대기업사원</P>
+                </div>
+            </div>
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
+                    <P class="info">00대학교<br>대기업사원</P>
+                </div>
+            </div>
             <br><br><br><br>
-            <ul class="actions special">
-                <li><a href="{% url 'mentoring' %}" class="button">목록으로</a></li>
-            </ul>
             <footer>
                 <div class="pagination">
                     <a href="#" class="page active">1</a>
@@ -121,5 +146,7 @@
             </footer>
         </div>
         </article>
+
+
 
 {% endblock %}

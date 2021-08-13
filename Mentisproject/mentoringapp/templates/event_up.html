@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'mentorbase.html' %}
 {% load static %}
 {% block content %}
 <style>
@@ -9,28 +9,21 @@
 
 </style>
 
-<form class="content" action="{% url 'event_up' %}" method="POST" enctype="multipart/form-data"> 
-    {% csrf_token %}
+<div class="content">
     <header><h1>Menti's Event</h1></header>
-    <!-- <div class="eventInput">
-        <h4>작성자</h4>
-        <input type="text" name='author'class="title" placeholder="작성자">
-    </div> -->
     <div class="eventInput">
         <h4>이벤트 제목</h4>
-        <input type="text" name='title' class="title" placeholder="이벤트 제목">
+        <input type="text" class="title" placeholder="이벤트 제목">
     </div>
     <div class="eventInput">
         <h4>상세 내용 작성</h4>
-        <input type='text' name='event_content' placeholder="이벤트의 상세 내용을 적어주세요!"></textarea>
+        <textarea placeholder="이벤트의 상세 내용을 적어주세요!"></textarea>
     </div>
-    <div>
-            <input type="file" name="photo" placeholder="관련 이미지"><br>
-    </div>
+    
     <div class="button-position">
-        <input type="submit" value="제출하기">
+        <a href="#" class="button primary">제출하기</a>
     </div>
-</form>
+</div>
     
     
 

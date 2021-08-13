@@ -15,8 +15,9 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Open+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Open+Sans&display=swap" rel="stylesheet"
 		<script src="https://kit.fontawesome.com/9640093bc0.js" crossorigin="anonymous"></script>
+		
 	</head>
 	<body class="is-preload">
 
@@ -37,29 +38,23 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="" class="logo">Mantis</a>
+						<a href="#" class="logo">Mantis</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
 							<li class="active"><a href="{% url 'index' %}">멘티스란?</a></li>
-							{% if login != 1 %}
 							<li><a href="{% url 'mentoring' %}">멘토 찾기</a></li>
 							<li><a href="{% url 'mypage' %}">내 서랍</a></li>
-							{% endif %}
 						</ul>
 
 									
 													
 						<ul class="icons">
-							<!--수정-->
-							{% if login != 1 %}
-							<a href="{% url 'logout' %}">로그아웃</a>
-							{% else %}
-							<li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i></a></li>
-							<li><a href="{% url 'signup' %}"><i class="fas fa-user-plus"></i></a></li>
-							{% endif %}
+
+							<li><a href="{% url 'login' %}"><i class="fas fa-user-plus"></i></a></li>
+							<li><a href="{% url 'signup' %}"><i class="fas fa-sign-in-alt"></i></a></li>
 						</ul>
 					</nav>
 

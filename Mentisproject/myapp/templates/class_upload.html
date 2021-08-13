@@ -1,26 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'mybase.html' %}
 {% block content %}
 
 {% load static %}
-<SCRIPT LANGUAGE="JavaScript">
-    cnt=0;
-    function input_append(ff){
-      cnt++;
-      app = document.getElementById("append");
-      app.innerHTML += cnt +"<input name=title"+cnt+" type=text placeholder=영상제목 />"+"<br>"+
-      "<textarea name=youtube_iframe"+cnt+" placeholder=복사하신내용을입력하세요></textarea>" +"<br><br><br><br>";
-    
-      document.getElementById("total").value = cnt;
-    }
-    
-
-    function input_result(ff){
-      
-      alert(cnt);
-      app = document.getElementById("append");
-      app.innerHTML += "<input name=total type=text value="+cnt+" />"
-    }
-    </SCRIPT>
 
 <style>
     *{
@@ -32,33 +13,25 @@
 </style>
 
 <!-- Form -->
-<h2>강의 업로드</h2>
+<h2>&#128189;강의 업로드</h2>
 <br>
 <hr style="margin: 0 0 1rem 0;">
 
 <form method="post" action="#">
-    {% csrf_token %}
     <div class="row gtr-uniform">
         <!-- class 이름 -->
         <div class="col-6 col-12-xsmall">
             <h3>CLASS 이름</h3>
-            <input type="text" name="class_name" id="demo-name" value="pass" placeholder="CLASS 이름"/>
+            <input type="text" name="demo-name" id="demo-name" value="" placeholder="CLASS 이름"/>
         </div>
 
         <!-- 강의 소개 -->
         <div class="col-12">
             <h3>강의 소개</h3>
-            <textarea name="class_intro" id="demo-message" placeholder="강의를 소개해주세요!" rows="6"></textarea>
-        </div>
-        <!-- 강의 소개 -->
-        <div class="col-12">
-            <h3>강의 가격</h3>
-            <input type="text" name="class_price" id="demo-name" value="" placeholder="CLASS 가격"/>
+            <textarea name="demo-message" id="demo-message" placeholder="강의를 소개해주세요!" rows="6"></textarea>
         </div>
 
-        
-
-        <!-- 커리큘럼
+        <!-- 커리큘럼 -->
         <h3>커리큘럼 &nbsp;
             <span><input type="file" name="demo-image" id="demo-image" value=""/></span>
         </h3>
@@ -67,21 +40,48 @@
             <span><input type="url" name="demo-name" id="demo-name" value="" placeholder="유튜브 링크 입력칸" /></span>
         </div>
     </div>
-     -->
-    <br>
-
-    <a href="https://www.youtube.com/">유튜브 가기</a>
+    
     <div class="col-6 col-12-xsmall">
-        
-        <input type="button" value="강의 영상 추가" onclick="input_append(this.form)"> <br>
-        <span id="append"></span>
-        <input type="hidden" id="total" name="total" value=0 >
-        <button>제출하기</button>
+        <h5>강의명</h5>
+        <input type="text" name="demo-name" id="demo-name" value="" placeholder="강의명을 입력해주세요."/>
     </div>
 
+    <br>
 
-
+    <div class="table-wrapper" style="text-align: center;">
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: center;">NO.1</th>
+                    <th style="text-align: center;">강의명</th>
+                    <th style="text-align: center;">PLAY</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>(영상강의 제목)</td>
+                    <td>▶</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>(영상강의 제목)</td>
+                    <td>▶</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>(영상강의 제목)</td>
+                    <td>▶</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </form>
+
+<ul class="actions fit">
+    <li><a href="#" class="button primary fit">등록하기</a></li>
+</ul>
+
     
 {% endblock %}

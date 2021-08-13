@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'mybase.html' %}
 {% block content %}
 
 {% load static %}
@@ -6,26 +6,22 @@
 
 
 <article class="post featured">
-   <!-- Posts -->
-      <section class="posts">
-         <article>
-            <p style="font-size: 60px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">결제 페이지 입니다.</p>
-               <br>
-               <form action="{% url 'cash_check' %}" method="POST">
-                  {% csrf_token %}
-                  <label for="cash">{{user.user_name}}님 얼마 충전할까요? </label>
-                  <input type="number" id="cash" name="cash" 
-                        minlength="4" maxlength="8" size="10" >
-                  <input type="submit" value="충전하기">
-               </form>
-         </article>
-      </section>
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+								        <p style="font-size: 60px; text-align: center; font-family: 'Noto Sans KR', sans-serif;">입금 대기 중입니다!<br>&#128184;&#128184;&#128184;&#128184;&#128184;&#128184;&#128184;&#128184;&#128184;&#128184;</p>
+                                            <br>
+                                        <a href=""{% url 'index' %}"><img src="{% static 'images/돈.jpg' %}" alt="" width="100%"></a>
+								</article>
+							</section>
 
-   <!-- Footer -->
-      <footer>
-         <div class="pagination">
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
 
-         </div>
-      </footer>
+								</div>
+							</footer>
 
-{% endblock %} 
+					</div>
+
+{% endblock %}

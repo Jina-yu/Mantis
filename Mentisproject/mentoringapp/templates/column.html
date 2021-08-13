@@ -1,44 +1,116 @@
-{% extends 'base.html' %}
+{% extends 'mentorbase.html' %}
 
 {% block content %}
 {% load static %}
+							<section class="posts">
 <br>
 <article class="post featured">
 	<header class="major">
-		<h1> MENTOR COLUMN </h1>
-        <h3>{{mentor}}님의 칼럼</h3>
+		<h1 > MENTOR COLUMN </h1>
 		<br />
 		<img src="{% static 'images/선생님.png' %}" width="250px" height="250px"  alt="" /><br>
 		<br />
-		<p>{{user.user_name}}님 만나서 반갑습니다!<br />
-            {{mentor.one_field}}
+		<p>멘티님 만나서 반갑습니다!<br />
+		   저는 아모레퍼시픽에서 3년 근무한 ooo멘토입니다.<br />
+		   저에 대해 더 알고 싶으신 멘티님은<br />
+		   저와 관련된 밑의 칼럼을 읽어 보세요!
 		</p>
 	</header>
 </article>
+
 <hr>
+<ul class="actions">
+	<li><a href="{% url 'column_write'%}" class="button primary">작성하기</a></li>
+</ul>
+
 <br>
 <br>
 <br>
 
-{% if column %}
-{% for c in column %}
-<a href="{% url 'column_detail1' c.id %}" class="list-group-item list-group-item-action">
+
+<a href="{% url 'column_detail1'%}" class="list-group-item list-group-item-action">
     <div class="d-flex w-100 justify-content-between">
-		<h3><B>{{c.title}}</B></h3>
+		<h2><B>아모레퍼시픽 프리메라, 2021 대한민국 올해의 녹색 상품 수상</B></h2>
         <small class="text-muted">자세히 보러가기</small>
     </div>
-    <small class="text-muted">{{c.created_at}}</small>
+	<br>
+    <p class="mb-1">아모레퍼시픽 기술연구원 ooo 원장은 "아모레퍼시픽은 앞으로도 기술 연구를 통해<br> 
+		지속 가능한 소재를 개발하고, 적용 범위를 점차 넓혀나갈 계획"이라고 말했다.
+		<br> 
+	    <br>	    
+	</p>
+    <small class="text-muted">2021-08-12</small>
 </a>
-<br>
-<br>
-<hr>
-{% endfor %}
-{% else %}
-<p>작성된 칼럼이 없습니다.</p>
-{% endif %}
 
-<ul class="actions special">
-	<li><a href="{% url 'mentoring' %}" class="button">목록으로</a></li>
-</ul>
+
+
+<br>
+<br>
+
+
+<a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between" >
+        <h2><B>ooo 아모레퍼시픽 기술연구원장 전무</B></h2>
+        <small class="text-muted">자세히 보러가기</small>
+    </div>
+	<br>
+    <p class="mb-1">아모레퍼시픽그룹이 12일 2021년 1월 1일자 조직개편을 단행했다.<br>
+		 ooo 아모레퍼시픽 R&D 전무는 1968년생 oo대에서 oo학과 졸업, 약학 석사, 약학 박사를 수료했다.	
+		<br>
+		<br>	
+	</p>
+	
+    <small class="text-muted">2020-11-12</small>
+</a>
+
+<br>
+<br>
+
+<a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+		<h2><B>아모레퍼시픽 기술연구원 "녹차유산균 '엑소솜' 피부 항염효과 입증"</B></h2>
+        <small class="text-muted">자세히 보러가기</small>
+    </div>
+	<br>
+    <p class="mb-1">ooo 아모레퍼시픽 기술연구원 수석연구원과 연구 그룹은 유기농 녹차밭에서<br>
+		 독자 발견한 식물성 녹차유산균에서 엑소솜을 분리해 정제해냈다.
+		<br>
+		<br>
+	</p>
+    <small class="text-muted">2020-07-29</small>
+</a>
+
+<br>
+<br>
+
+<a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+		<h2><B> ooo 수석연구원, 대한화장품학회 화장품 과학기술상 수상 外</B></h2>
+        <small class="text-muted">자세히 보러가기</small>
+    </div>
+	<br>
+    <p class="mb-1">아모레퍼시픽 기술연구원은 송채연 수석연구원이 2020 대한화장품학회 추계학술발표대회에서<br>
+		 화장품 과학기술상 우수발표상을 수상했다고 23일 밝혔다.
+		<br>
+		<br>
+	</p>
+    <small class="text-muted">2020-11-23</small>
+</a>
+
+<br>
+<br>
+
+<hr />
+							</section>
+
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+									<!--<a href="#" class="previous">Prev</a>-->
+
+								</div>
+							</footer>
+
+					</div>
 
 {% endblock %}
