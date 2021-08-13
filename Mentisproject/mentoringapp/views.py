@@ -31,3 +31,18 @@ def mentor(request):
 
 def apply_check(request):
     return render(request, "apply_check.html")
+
+def column(request):
+    return render(request, "column.html")
+
+def column_write(request):
+    return render(request, "column_write.html")
+
+def column_re(request):
+    return render(request, "column_re.html")
+
+def column_detail1(request):
+    return render(request, "column_detail1.html") 
+  
+def column_coment_re(request):
+    return render(request, "column_coment_re.html") 
