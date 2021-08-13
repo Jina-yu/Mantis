@@ -1,0 +1,136 @@
+{% extends 'mentorbase.html' %}
+{% block content %}
+
+{% load static %}
+
+<style>
+    .application {margin-top: 3rem; height:70px;}
+
+    .clearfix:before, .clearfix:after {
+        content:'';
+        display: block;
+        clear: both;
+    }
+    .content {font-family: 'Noto Sans KR', sans-serif; letter-spacing: -0.8px;}
+
+    .content h1 {font-family: 'Noto Sans KR', sans-serif; font-size: 3rem;}
+
+    section h3,h2,h1,h4 {font-size: 1.5rem; letter-spacing: -0.5px; font-family: 'Noto Sans KR', sans-serif;}
+    section div button {float: right;}
+
+    .content .info h3 {font-size: 1rem;}
+    .content .info h3 span {font-size: 2rem;}
+    .content .info {
+        width: 30%;
+        height: 600px;
+        float: right;
+        border-left: 1px solid #333;
+        padding: 3rem;
+        word-break: keep-all;
+    }
+    .content .info p {text-align: left;}
+    .content .info-right {margin: 3rem 0; font-size: 0.8rem; text-align: right; line-height: 25px; color: #3C3FB2}
+    
+    .content .intro {
+        margin-top: 3rem;
+        width: 70%;
+        float: left;
+        padding: 2rem;
+        padding-right: 3rem;
+        word-break: keep-all;
+        margin-bottom: 3rem;
+    }
+
+    .content .classList {
+        width: 70%;
+        float: left;
+        padding: 2rem;
+        padding-right: 3rem;
+        margin-bottom: 3rem;
+
+    }
+
+    .content .review {
+        width: 70%;
+        float: left;
+        padding: 2rem;
+        padding-right: 3rem;
+    }
+    .classList table {text-align: center;}
+    .classList table th {text-align: center;}
+
+    .userRiview {margin-bottom: 3rem;}
+    .userRiview hr {margin: 1rem 0;}
+    .userRiview p {margin: 0 1rem;}
+    .userRiview p.name {color: #777;}
+    .userRiview p.reviewtext {font-size: 1.1rem; margin: 1rem;}
+    
+</style>
+
+<div class="content">
+    <header><h1>class이름</h1></header>
+    <section class="info">
+        <div><h3>멘토 <span>{{mentor.user_info_id}}</span></h3></div>
+        <div class="info-right">
+            {{lec.lecture_title}}
+        </div>
+        <div>
+            <p>{{Lec.mentor_description}}</p>
+        </div>
+        <button type="submit" class="button primary fit">멘토링 신청하기!</button>
+    </section>
+    {% for lec in Lec %}
+    <section class="intro">
+        <h3>강의 소개</h3>
+        <div><p>{{lec.description}}            
+            </p>
+        </div>
+        <div></div>
+    </section>
+    {% endfor %}
+    <section class="classList">
+        <h3>커리큘럼</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.1</th>
+                    <th>강좌명</th>
+                    <th>play</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for m in Lec %}
+                <tr>
+                    <td></td>
+                    <td>{{m.lecture_title}}</td>
+                    <td><a href="{% url 'urlnameLectureDetail' m.id%}" target="'_blank" onClick="window.open(this.href, '', 'width=1200, height=600');">▶</a></td>
+                    <!-- 수강을안하면 못클릭하게 -->
+                </tr>
+            {% endfor %}
+            </tbody>
+           
+        </table>
+    </section>
+    <section class="review">
+        <h3>후기</h3>
+        
+        <div class="userRiview">
+            {% for a in review %}
+            <p class="name">{{a.author}}</p>
+            <p class="reviewtext">
+                평점 : {{a.review_point}}점
+            </p>
+            {% endfor %}
+        </div>
+        
+        <div>
+            <span>리뷰작성하기</span>
+            <textarea></textarea>
+            <br>
+            <button type="submit">제출하기</button>
+        </div>
+        <button type="submit" class="button primary fit application">멘토링 신청하기!</button>
+    </section>
+</div>
+    
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'mentorbase.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+    .clearfix:before, .clearfix:after {
+        content:'';
+        display: block;
+        clear: both;
+    }
+    .mantis > p {
+        text-align: center;
+        line-height: 30px;
+        font-family: sans-serif;
+        font-weight: bold;
+    }
+
+    .mantis > hr {
+        padding-top: 100px;
+    }
+    
+    .eventUp-button {text-align: right; margin-bottom: 10rem;}
+
+    .eventList {
+        width: 100%;
+		border: 5px solid #b4d86786;
+		border-radius: 0;
+		cursor: pointer;
+        font-family: 'Noto Sans KR', sans-serif;
+		padding: 1rem;
+        transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+        margin-top: 5rem;
+    }
+    .eventList:hover {
+    box-shadow: inset 0 0 0 2px #b5d867;
+    border-color: #b5d867;
+    }
+
+    .eventList .title {
+        height: 100%;
+        width: 80%;
+        padding: 5px;
+        float: left;
+    }
+
+    .eventList .title h1 {
+        font-family: 'Noto Sans KR', sans-serif;
+        text-align: left;
+        font-size: 2rem;
+        font-weight: 800;
+        white-space: inherit;
+        word-break: keep-all;
+        line-height: 3.5rem;
+        letter-spacing: -1px;
+    }
+
+    .eventList .mentoInfo{
+        float: right;
+        text-align: right;
+    }
+
+    .eventList .mentoInfo .info {
+        text-align: right;
+        padding-top: 1rem;
+        line-height: 25px;
+        margin: 0;
+        color: #5C5980;
+    }
+    .eventList .mentoInfo .mento .name { font-size: 20px; color: black;}
+    .eventList .mentoInfo .mento {text-align: right; color: rgba(0, 0, 0, 0.452);}
+    
+
+</style>
+
+<div id="main">
+    <!-- Featured Post -->
+    
+        <article class="post featured">
+            <div class="mantis">
+                <h1><a>멘토의 이벤트</a></h1>
+                <p>멘토들이 진행하는 다양한 이벤트에 참여해보세요!
+                    <br>자신이 원하는 이벤트에 참여하고 다양한 혜택을 누리세요!</p>
+                <hr>
+            </div>
+
+            <div class="eventUp-button"><a href="{% url 'event_up' %}" class="button primary">이벤트 작성하기</a></div>
+            <!-- 멘토로 로그인됐을때만 보이게 -->
+            
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>여름방학 특별 면담 이벤트!</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">이시윤</span></p>                                        
+                    <P class="info">경기대학교<br>네이버 웹디자이너</P>
+                </div>
+            </div>
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
+                    <P class="info">00대학교<br>대기업사원</P>
+                </div>
+            </div>
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>만약에 내가 첫 월급을 받는다면?! 하고 싶었던걸 적어보세요!</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">강동원</span></p>                                        
+                    <P class="info">00대학교<br>짱좋은대기업</P>
+                </div>
+            </div>
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
+                    <P class="info">00대학교<br>대기업사원</P>
+                </div>
+            </div>
+            <div class="eventList clearfix">
+                <div class="title">
+                    <h1>취업을 위한 자소서 첨삭 이벤트</h1>
+                </div>
+                <div class="mentoInfo clearfix">
+                    <p class="mento">멘토&nbsp;<span class="name">강하늘</span></p>                                        
+                    <P class="info">00대학교<br>대기업사원</P>
+                </div>
+            </div>
+            <br><br><br><br>
+            <footer>
+                <div class="pagination">
+                    <a href="#" class="page active">1</a>
+                    <a href="#" class="page">2</a>
+                    <a href="#" class="page">3</a>
+                    <span class="extra">&hellip;</span>
+                    <a href="#" class="page">8</a>
+                    <a href="#" class="page">9</a>
+                    <a href="#" class="page">10</a>
+                    <a href="#" class="next">Next</a>
+                </div>
+            </footer>
+        </div>
+        </article>
+
+
+
+{% endblock %}
