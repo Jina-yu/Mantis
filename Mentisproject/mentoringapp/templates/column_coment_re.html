@@ -3,11 +3,39 @@
 {% block content %}
 {% load static %}
 
-<h1> dsdkjflasdfjlajdf</h1>
-<h2>Box</h2>
-									<div class="box">
-										<p>Felis sagittis eget tempus primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Magna sed etiam ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus lorem ipsum dolor sit amet nullam. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit adipiscing eu felis iaculis volutpat lorem ipsum dolor.</p>
-									</div>
+<br>
+<h2 class="text-center"> 질문 수정</h2>
+<br />
+<h5 class="text-center"> <b> 수정하는 내용을 입력해주세요! </b></h5>
+<br />
+<hr>
+<br>
 
-									<hr />
+
+<h5><b>제목</b></h5>
+<div class="field">
+	<textarea name="message" id="message" rows="1" placeholder="질문 제목을 입력해주세요!"></textarea>
+</div>
+
+<br />
+
+<h5><b>작성자</b></h5>
+<div class="field">
+	<textarea name="message" id="message" rows="1" placeholder="이름을 입력해주세요!"></textarea>
+</div>
+
+<br />
+
+<h5><b>질문 내용</b></h5>
+<div class="field">
+	<textarea name="message" id="message" rows="10" placeholder="질문 내용을 입력해주세요!"></textarea>
+</div>
+<br>
+<br>
+
+
+<ul class="actions special">
+	<li><a href="{% url 'column_re'%}" class="button primary">수정</a></li>
+	<li><a href="{% url 'column'%}" class="button">취소</a></li>
+</ul>
 {% endblock %}
