@@ -29,6 +29,9 @@ def class1_play(request):
 def mentor(request):
     return render(request, "mentor.html")
 
+def apply(request):
+    return render(request, "apply.html")    
+
 def apply_check(request):
     return render(request, "apply_check.html")
 
@@ -45,4 +48,7 @@ def column_detail1(request):
     return render(request, "column_detail1.html") 
   
 def column_coment_re(request):
-    return render(request, "column_coment_re.html") 
+    return render(request, "column_coment_re.html")
+
+def qna(request):
+    return render(request, "qna.html")  
